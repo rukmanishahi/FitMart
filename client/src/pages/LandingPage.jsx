@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { auth } from "../auth/firebase";
 
 // ── Static data ────────────────────────────────────────────────────────────
 const STATS = [
@@ -144,7 +145,7 @@ export default function LandingPage() {
 
             <div className={`fade-up ${visible ? "visible" : ""} delay-4 flex flex-wrap gap-3`}>
               <button
-                onClick={() => navigate("/auth")}
+                onClick={() => navigate(auth.currentUser ? "/home" : "/auth")}
                 className="bg-stone-900 text-white text-sm px-8 py-3.5 rounded-full
                            hover:bg-stone-700 transition-colors"
               >
@@ -226,7 +227,7 @@ export default function LandingPage() {
                 key={i}
                 className="bg-white rounded-2xl p-8 border border-stone-200 hover:shadow-lg
                            transition-all cursor-pointer"
-                onClick={() => navigate("/auth")}
+                onClick={() => navigate(auth.currentUser ? "/home" : "/auth")}
               >
                 <span className="text-[10px] tracking-[0.2em] uppercase text-stone-400 mb-3 block">
                   {program.level}
@@ -334,10 +335,10 @@ export default function LandingPage() {
               <div
                 key={i}
                 className={`rounded-2xl p-8 flex flex-col gap-5 cursor-pointer transition-all hover:shadow-lg ${plan.highlight
-                    ? "bg-stone-900 text-white hover:bg-stone-800"
-                    : "bg-white border border-stone-200 hover:border-stone-300"
+                  ? "bg-stone-900 text-white hover:bg-stone-800"
+                  : "bg-white border border-stone-200 hover:border-stone-300"
                   }`}
-                onClick={() => navigate("/auth")}
+                onClick={() => navigate(auth.currentUser ? "/home" : "/auth")}
               >
                 <div>
                   <p className="text-xs tracking-widest uppercase text-stone-400">{plan.name}</p>
@@ -358,10 +359,10 @@ export default function LandingPage() {
                   ))}
                 </ul>
                 <button
-                  onClick={e => { e.stopPropagation(); navigate("/auth"); }}
+                  onClick={e => { e.stopPropagation(); navigate(auth.currentUser ? "/home" : "/auth"); }}
                   className={`text-sm py-2.5 rounded-full transition-colors ${plan.highlight
-                      ? "bg-white text-stone-900 hover:bg-stone-100"
-                      : "border border-stone-300 text-stone-700 hover:bg-stone-50"
+                    ? "bg-white text-stone-900 hover:bg-stone-100"
+                    : "border border-stone-300 text-stone-700 hover:bg-stone-50"
                     }`}
                 >
                   {plan.cta}
@@ -380,7 +381,7 @@ export default function LandingPage() {
             Your fitness journey starts with one decision.
           </h2>
           <button
-            onClick={() => navigate("/auth")}
+            onClick={() => navigate(auth.currentUser ? "/home" : "/auth")}
             className="bg-white text-stone-900 text-sm px-10 py-4 rounded-full hover:bg-stone-100 transition-colors"
           >
             Create your account →

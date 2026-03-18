@@ -214,7 +214,7 @@ export default function Navbar({
                 /* ── Logged OUT: Sign In + Get Started (landing) or Sign In (home) ── */
                 <div className="flex items-center gap-2 ml-1">
                   <button
-                    onClick={() => navigate("/auth")}
+                    onClick={() => navigate(user ? "/home" : "/auth")}
                     className={`hidden sm:block text-sm px-4 py-2 transition-colors
                                  ${isLanding && !navOpaque
                         ? "text-white/80 hover:text-white"
@@ -223,7 +223,7 @@ export default function Navbar({
                     Sign In
                   </button>
                   <button
-                    onClick={() => navigate("/auth")}
+                    onClick={() => navigate(user ? "/home" : "/auth")}
                     className={`text-sm px-5 py-2 rounded-full transition-colors
                                  ${isLanding && !navOpaque
                         ? "bg-white text-stone-900 hover:bg-stone-100"

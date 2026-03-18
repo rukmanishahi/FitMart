@@ -460,13 +460,6 @@ export default function ProductConfirmation() {
           >
             Continue Shopping
           </button>
-          <button
-            onClick={() => navigate("/")}
-            className="flex-1 border border-stone-300 text-stone-700 text-sm px-8 py-3.5
-                       rounded-full hover:bg-stone-100 transition-colors text-center"
-          >
-            Go to Home
-          </button>
         </div>
 
         {/* ── Footer note ────────────────────────────────────────── */}
