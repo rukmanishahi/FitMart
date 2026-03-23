@@ -10,6 +10,7 @@ import { getAuthHeaders } from "../utils/getAuthHeaders";
 import FitnessChatBot from "../components/FitnessChatBot";
 import WelcomeBanner from "../components/WelcomeBanner";
 import { useWelcomeDiscount } from "../auth/useWelcomeDiscount";
+import BMICalculator from "../components/BMICalculator";
 
 const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
@@ -143,8 +144,8 @@ function ProductCard({ product, onAdd, cartItems = [], updateQty }) {
             <button
               onClick={handleAdd}
               className={`text-xs px-4 py-2 rounded-full transition-all duration-200 ${added
-                  ? "bg-stone-900 text-white"
-                  : "border border-stone-300 text-stone-700 hover:bg-stone-900 hover:text-white hover:border-stone-900"
+                ? "bg-stone-900 text-white"
+                : "border border-stone-300 text-stone-700 hover:bg-stone-900 hover:text-white hover:border-stone-900"
                 }`}
             >
               {added ? "Added ✓" : "Add to cart"}
@@ -389,8 +390,8 @@ export default function HomePage() {
               {CATEGORIES.map(c => (
                 <button key={c.value} onClick={() => setActiveCategory(c.value)}
                   className={`text-xs px-4 py-2 rounded-full transition-all ${activeCategory === c.value
-                      ? "bg-stone-900 text-white"
-                      : "bg-white border border-stone-200 text-stone-600 hover:bg-stone-50"
+                    ? "bg-stone-900 text-white"
+                    : "bg-white border border-stone-200 text-stone-600 hover:bg-stone-50"
                     }`}
                 >
                   {c.name}
@@ -444,6 +445,12 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* BMI & Calorie Calculator */}
+        <section>
+          <BMICalculator />
+        </section>
+
+        {/* Upgrade */}
         <section className="pb-8">
           <div className="mb-8">
             <p className="text-xs tracking-[0.2em] uppercase text-stone-400 mb-2">Membership</p>
